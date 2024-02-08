@@ -5,30 +5,20 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  console.log("running metadata");
-    // await fetch("https://jsonplaceholder.typicode.com/todos");
-  await fetch("https://bundle.mxlocker.com/category-bundle.json", {
-    headers: {
-      "content-type": "application/json",
-    },
-  });
+  console.log("generateMetadata", params.slug)
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return {
     title: params.slug,
   };
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  console.log("running page");
-    // await fetch("https://jsonplaceholder.typicode.com/todos");
-  await fetch("https://bundle.mxlocker.com/category-bundle.json", {
-    headers: {
-      "content-type": "application/json",
-    },
-  });
+  console.log("rendering page", params.slug)
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   const slug = params.slug;
   return (
-    <main>
-      <h1>{slug}</h1>
+    <main className="flex flex-col gap-[1.6rem]">
+      <h1>Current Page: {slug}</h1>
       <Link href="/home">Home</Link>
       <Link href="/about">About</Link>
       <Link href="/contact">Contact</Link>
